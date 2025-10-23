@@ -97,3 +97,18 @@ table td {
     padding: 0.5em 1em;
     border: 1px solid #CCC;
 }
+
+#list {
+    user-select: none;
+}
+
+#list div {
+    cursor: pointer;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#list div:hover {
+    background-color: black;
+    color: white;
+}
