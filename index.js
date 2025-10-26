@@ -1,23 +1,40 @@
 content = document.getElementById('content');
 content.style.display = 'none';
 
-list = document.getElementById('list');
+main = document.getElementById('main');
+notes = document.getElementById('notes');
+progresses = document.getElementById('progresses');
 
 async function loadMarkdown(file) {
   const res = await fetch(file);
   const text = await res.text();
-  document.getElementById('content').innerHTML = marked.parse(text);
+  document.getElementById('content').innerHTML += marked.parse(text);
 }
 
-// make sure you include marked.js
-loadMarkdown('./notes/oct23.md');
-
-for (let i = 0; i < list.children.length; i++) {
-  list.children[i].addEventListener('click', async () => {
-    let file = list.children[i].dataset.file;
+for (let i = 0; i < notes.children.length; i++) {
+  notes.children[i].addEventListener('click', async () => {
+    let file = notes.children[i].dataset.file;
     await loadMarkdown(`./notes/${file}.md`);
-    list.style.display = 'none';
+    main.style.display = 'none';
     content.style.display = 'block';
-    console.log('Markdown loaded');
   });
 }
+
+for (let i = 0; i < progresses.children.length; i++) {
+  progresses.children[i].addEventListener('click', async () => {
+    let file = progresses.children[i].dataset.file;
+    main.style.display = 'none';
+    const res = await fetch(`./progresses/${file}.html`);
+    content.innerHTML += await res.text();
+    main.style.display = 'none';
+    content.style.display = 'block';
+  });
+}
+
+content.addEventListener('click', (e) => {
+  if (e.target.id === 'content-back') {
+    main.style.display = 'block';
+    content.style.display = 'none';
+    content.innerHTML = '<div id="content-back">back?</div>';
+  }
+});

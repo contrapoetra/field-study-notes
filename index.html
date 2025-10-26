@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notulensi KKN</title>
+    <title>kkn journal</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script type="module" src="./index.js" defer></script>
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-      <div id="list">
-          <div data-file="oct23">Oct 23</div>
+      <div id="main">
+          <h1>meeting notes</h1>
+          <div class="section" id="notes">
+              <div data-file="oct19">Oct 19</div>
+              <div data-file="oct23">Oct 23</div>
+          </div>
+
+          <h1>design progress</h1>
+          <div class="section" id="progresses">
+              <div data-file="oct25">(Oct 25) Typography</div>
+          </div>
       </div>
-      <div id="content"></div>
+      <div id="content">
+          <div id="content-back">back</div>
+      </div>
   </body>
 </html>

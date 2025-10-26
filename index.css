@@ -98,17 +98,23 @@ table td {
     border: 1px solid #CCC;
 }
 
-#list {
+.section {
     user-select: none;
 }
 
-#list div {
+.section div {
     cursor: pointer;
     padding: 0.5em 1em;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#list div:hover {
+.section div:hover {
     background-color: black;
     color: white;
+}
+
+#content-back {
+    user-select: none;
+    cursor: pointer;
+    margin-bottom: 1em;
 }
